@@ -1,19 +1,18 @@
 # 🔮 Sanando Con Cartas - Mega Biblioteca de Tarot
 
-**CONFIGURACIÓN PERSONALIZADA PARA: bostonstock2025@gmail.com**
+> 🎆 **Sistema completo de ventas automático para cursos de tarot**
 
-Una página web profesional y hermosa para vender tu mega biblioteca de tarot con integración completa de MercadoPago y entrega automática.
+Una página web profesional y hermosa para vender la mega biblioteca de tarot más completa en español, con integración completa de MercadoPago y entrega automática por email.
 
-## ✨ Características Configuradas
+## 🚀 Características Principales
 
-- **Diseño Profesional**: Interfaz moderna con carta "El Mago" personalizada
-- **Entrega Automática**: Sistema configurado con Google Drive
-- **Email Configurado**: bostonstock2025@gmail.com con contraseña de app
-- **Google Drive**: Link configurado para entrega inmediata
-- **Responsive Design**: Se adapta perfectamente a todos los dispositivos
-- **Integración MercadoPago**: Procesamiento seguro de pagos
-- **Sistema de Urgencia**: Contador regresivo de 24 horas
-- **Animaciones Avanzadas**: Efectos visuales y transiciones suaves
+- 🎨 **Diseño Profesional**: Interfaz moderna con carta "El Mago" personalizada
+- ⚙️ **Entrega Automática**: Sistema de entrega inmediata vía Google Drive
+- 📱 **Responsive**: Optimizado para todos los dispositivos
+- 💳 **MercadoPago**: Procesamiento seguro de pagos en pesos argentinos
+- ⏰ **Urgencia**: Contador regresivo de 24 horas para aumentar conversiones
+- 📧 **Email Automático**: Entrega instantánea del curso tras el pago
+- ✨ **Animaciones**: Efectos visuales y transiciones premium
 
 ## 📁 Estructura de Archivos
 
