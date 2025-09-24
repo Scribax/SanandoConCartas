@@ -213,7 +213,17 @@ async function sendAdminNotification(customerData) {
 
 // Ruta raíz - servir index.html
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
+    try {
+        res.sendFile(__dirname + '/index.html');
+    } catch (error) {
+        console.error('Error serving index.html:', error);
+        res.status(500).send('Error loading page');
+    }
+});
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ status: 'OK', timestamp: new Date().toISOString(), service: 'Sanando Con Cartas' });
 });
 
 // Endpoint para crear preferencia de pago
@@ -375,15 +385,27 @@ app.get('/status', (req, res) => {
 
 // ===== INICIAR SERVIDOR =====
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, '0.0.0.0', () => {
     console.log('🚀 Servidor iniciado exitosamente');
     console.log(`📡 Puerto: ${PORT}`);
     console.log(`📧 Email configurado: ${CONFIG.email.auth.user}`);
     console.log(`💳 MercadoPago: ${CONFIG.mercadopago.access_token ? 'Configurado' : 'Pendiente'}`);
     console.log('🔗 Endpoints disponibles:');
+    console.log('   GET / - Página principal');
+    console.log('   GET /health - Health check');
+    console.log('   GET /status - Estado del sistema');
+    console.log('   POST /api/create-preference - Crear preferencia');
     console.log('   POST /webhook/mercadopago - Webhook de MercadoPago');
     console.log('   POST /test/send-course - Envío de prueba');
-    console.log('   GET /status - Estado del sistema');
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+    console.log('🛑 Cerrando servidor...');
+    server.close(() => {
+        console.log('✅ Servidor cerrado exitosamente');
+        process.exit(0);
+    });
 });
 
 module.exports = { app, CONFIG };
