@@ -250,8 +250,8 @@ document.querySelectorAll('.module, .benefit-item, .feature-card').forEach(el =>
 
 // WhatsApp integration
 function openWhatsApp() {
-    const phoneNumber = '5491112345678'; // Replace with actual number
-    const message = encodeURIComponent('¡Hola! Me interesa el curso de Tarot "Sanando Con Cartas". ¿Podrían darme más información?');
+    const phoneNumber = '5491156177616';
+    const message = encodeURIComponent('¡Hola! Estoy interesado en la Mega Biblioteca de Tarot "Sanando Con Cartas". ¿Podrías darme más información?');
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappURL, '_blank');
 }

@@ -146,7 +146,7 @@ async function sendCourseDeliveryEmail(customerData) {
                 <p>Si tienes alguna pregunta o problema para acceder, contáctanos:</p>
                 <ul>
                     <li>📧 <strong>Email:</strong> ${CONFIG.admin.email}</li>
-                    <li>📱 <strong>WhatsApp:</strong> +54 9 11 1234-5678 (opcional)</li>
+                            <li>📱 <strong>WhatsApp:</strong> +54 9 11 5617-7616</li>
                 </ul>
 
                 <hr style="margin: 30px 0; border: none; height: 1px; background: #eee;">
