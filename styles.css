@@ -1197,6 +1197,51 @@ h1, h2, h3, h4 {
     text-align: center;
 }
 
+/* Email Capture Form */
+.email-capture {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.email-capture label {
+    display: block;
+    color: var(--black);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.email-input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background: white;
+    color: var(--black);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.email-input::placeholder {
+    color: #999;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(107, 70, 193, 0.1);
+}
+
+.email-note {
+    display: block;
+    color: var(--gray);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    text-align: center;
+    font-style: italic;
+}
+
 .payment-info {
     margin-top: 1rem;
     color: var(--gray);

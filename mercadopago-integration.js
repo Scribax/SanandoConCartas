@@ -37,10 +37,21 @@ async function createPreference() {
         
         // This would typically be done on your backend
         // For demonstration, we're showing the frontend integration
+        // Capturar email del formulario si existe
+        const customerEmailInput = document.getElementById('customer-email');
+        const customerEmail = customerEmailInput ? customerEmailInput.value : '';
+        
+        // Validación básica del email si se ingresó
+        if (customerEmail && !isValidEmail(customerEmail)) {
+            showErrorMessage('Por favor, ingresa un email válido');
+            customerEmailInput.focus();
+            return;
+        }
+        
         const preferenceData = {
             items: [courseProduct],
             payer: {
-                email: '', // This will be filled by the user
+                email: customerEmail, // Pre-llenar con el email del formulario
             },
             back_urls: {
                 success: window.location.origin + '/success.html',
@@ -87,6 +98,12 @@ function generateOrderId() {
     const timestamp = Date.now();
     const random = Math.floor(Math.random() * 1000);
     return `TAROT-${timestamp}-${random}`;
+}
+
+// Validar formato de email
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
 
 // Create preference on backend (you need to implement this endpoint)
