@@ -1,0 +1,33 @@
+{
+  "name": "sanando-con-cartas-backend",
+  "version": "1.0.0",
+  "description": "Sistema de entrega automatizada para la Mega Biblioteca de Tarot",
+  "main": "backend-config.js",
+  "scripts": {
+    "start": "node backend-config.js",
+    "dev": "nodemon backend-config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tarot",
+    "course",
+    "mercadopago",
+    "email",
+    "automation"
+  ],
+  "author": "Sanando Con Cartas",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "node-fetch": "^2.7.0",
+    "nodemailer": "^6.9.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error en el Pago - Sanando Con Cartas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-magic"></i>
+                <span>Sanando Con Cartas</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Error Section -->
+    <section class="error-section">
+        <div class="container">
+            <div class="error-content">
+                <div class="error-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                
+                <h1 class="error-title">¡Oops! Hubo un problema</h1>
+                
+                <p class="error-message">
+                    El pago no pudo ser procesado. No te preocupes, tu dinero está seguro y no se realizó ningún cargo.
+                </p>
+                
+                <div class="error-reasons">
+                    <h3>Posibles causas:</h3>
+                    <ul>
+                        <li>Fondos insuficientes en tu cuenta o tarjeta</li>
+                        <li>Datos incorrectos de la tarjeta</li>
+                        <li>La transacción fue rechazada por tu banco</li>
+                        <li>Problemas temporales de conectividad</li>
+                    </ul>
+                </div>
+                
+                <div class="error-actions">
+                    <a href="index.html#precio" class="btn btn-primary">
+                        <i class="fas fa-redo"></i>
+                        Intentar Nuevamente
+                    </a>
+                    
+                    <button onclick="openWhatsApp()" class="btn btn-secondary">
+                        <i class="fab fa-whatsapp"></i>
+                        Contactar Soporte
+                    </button>
+                </div>
+                
+                <div class="help-section">
+                    <div class="help-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>¿Necesitas ayuda?</h4>
+                            <p>Contáctanos por WhatsApp y te ayudaremos a completar tu compra</p>
+                        </div>
+                    </div>
+                    
+                    <div class="help-item">
+                        <i class="fas fa-credit-card"></i>
+                        <div>
+                            <h4>Métodos de pago alternativos</h4>
+                            <p>Aceptamos todas las tarjetas de crédito y débito, transferencias bancarias y más</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-magic"></i>
+                        <span>Sanando Con Cartas</span>
+                    </div>
+                    <p>Estamos aquí para ayudarte en cada paso de tu journey espiritual.</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-line"></div>
+                <p>&copy; 2024 Sanando Con Cartas. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    <script src="mercadopago-integration.js"></script>
+    
+    <script>
+        // WhatsApp function
+        function openWhatsApp() {
+            const phoneNumber = '5491112345678';
+            const message = encodeURIComponent('¡Hola! Tuve un problema con el pago del curso de Tarot. ¿Podrían ayudarme?');
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Show payment details if available
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const paymentId = urlParams.get('collection_id');
+            
+            if (paymentId) {
+                const errorContent = document.querySelector('.error-content');
+                const paymentInfo = document.createElement('div');
+                paymentInfo.className = 'payment-info';
+                paymentInfo.innerHTML = `
+                    <div class="payment-details">
+                        <h4>Información del intento de pago</h4>
+                        <p><strong>ID de Transacción:</strong> ${paymentId}</p>
+                        <p><em>Guarda este número para referencia</em></p>
+                    </div>
+                `;
+                errorContent.appendChild(paymentInfo);
+            }
+        });
+    </script>
+
+    <style>
+        .error-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0;
+            background: var(--light-bg);
+        }
+
+        .error-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .error-icon {
+            margin-bottom: 2rem;
+        }
+
+        .error-icon i {
+            font-size: 5rem;
+            color: #EF4444;
+            animation: errorShake 2s ease-in-out infinite;
+        }
+
+        @keyframes errorShake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
+        .error-title {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .error-message {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .error-reasons {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+
+        .error-reasons h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .error-reasons ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .error-reasons li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f0f0f0;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .error-reasons li:last-child {
+            border-bottom: none;
+        }
+
+        .error-reasons li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+        }
+
+        .error-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .help-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .help-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            text-align: left;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .help-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 0.5rem;
+        }
+
+        .help-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .help-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .payment-details {
+            background: #FFF3CD;
+            border: 1px solid #FFEAA7;
+            color: #856404;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+
+        .payment-details h4 {
+            margin-bottom: 0.5rem;
+            color: #856404;
+        }
+
+        @media (max-width: 768px) {
+            .error-title {
+                font-size: 2rem;
+            }
+
+            .error-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .error-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .help-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
