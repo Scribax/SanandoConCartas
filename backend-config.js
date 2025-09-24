@@ -1,6 +1,7 @@
 // Configuración completa del Backend - Sanando Con Cartas
 // Este archivo contiene toda la configuración necesaria para el servidor
 
+require('dotenv').config();
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
@@ -28,22 +29,22 @@ const CONFIG = {
     email: {
         service: 'gmail',
         auth: {
-            user: 'bostonstock2025@gmail.com',
-            pass: 'ppgt nhfg nbgz oepx' // App Password de Gmail
+            user: process.env.EMAIL_USER || 'bostonstock2025@gmail.com',
+            pass: process.env.EMAIL_PASS || 'ppgt nhfg nbgz oepx'
         },
-        from: 'bostonstock2025@gmail.com'
+        from: process.env.EMAIL_USER || 'bostonstock2025@gmail.com'
     },
 
     // MercadoPago Configuration
     mercadopago: {
-        access_token: 'APP_USR-2823973966774541-070800-09828874bdf313cfa30a5c8f334e7f9b-305616995',
-        webhook_secret: 'TU_WEBHOOK_SECRET', // Opcional para mayor seguridad
-        public_key: 'APP_USR-82a9259a-1964-4bbe-a4c4-8ab50745ba4d'
+        access_token: process.env.MERCADOPAGO_ACCESS_TOKEN || 'APP_USR-2823973966774541-070800-09828874bdf313cfa30a5c8f334e7f9b-305616995',
+        webhook_secret: process.env.WEBHOOK_SECRET || 'TU_WEBHOOK_SECRET',
+        public_key: process.env.MERCADOPAGO_PUBLIC_KEY || 'APP_USR-82a9259a-1964-4bbe-a4c4-8ab50745ba4d'
     },
 
     // Google Drive Configuration
     googleDrive: {
-        folderLink: 'https://drive.google.com/drive/folders/1QuJYZSicxy8Sd1V-jl42lGKSU43_UOAh?usp=sharing'
+        folderLink: process.env.DRIVE_LINK || 'https://drive.google.com/drive/folders/1QuJYZSicxy8Sd1V-jl42lGKSU43_UOAh?usp=sharing'
     },
 
     // Course Information
@@ -220,7 +221,9 @@ app.post('/api/create-preference', async (req, res) => {
     try {
         const { items, payer } = req.body;
         
-        const baseUrl = 'http://localhost:3000'; // Forzar localhost para desarrollo
+        const baseUrl = process.env.NODE_ENV === 'production' 
+            ? (req.headers.host ? `https://${req.headers.host}` : 'https://sanandoconcartas.onrender.com')
+            : 'http://localhost:3000';
         
         const preferenceData = {
             items: [{
