@@ -4,8 +4,10 @@
   "description": "Sistema de entrega automatizada para la Mega Biblioteca de Tarot",
   "main": "backend-config.js",
   "scripts": {
-    "start": "node backend-config.js",
-    "dev": "nodemon backend-config.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "frontend": "node dev-server.js",
+    "backend": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
